@@ -128,6 +128,7 @@
     init: function(options) {
       this.superInit(options);
       var self = this;
+      this.frame = 0;
       this.player = Sprite('isi_nageru').$extend({
         x: CENTER_X,
         y: 80..y,
@@ -619,7 +620,7 @@
       var MAX_ONI = 50;
       var ENEMY_RATE = 40 - MAX_ENEMY;
       var ONI_RATE = 240 - MAX_ONI;
-      var rate = Math.min(app.frame, MAX_FRAME) / MAX_FRAME;
+      var rate = Math.min(this.frame++, MAX_FRAME) / MAX_FRAME;
       this.enemyTask.waitTime = 40 - ENEMY_RATE * rate | 0;
       this.oniTask.waitTime = 240 - ONI_RATE * rate | 0;
       this.tensiTask.waitTime = (240 - ONI_RATE * rate) * 1.8 | 0;
